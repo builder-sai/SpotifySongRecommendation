@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SpotifyWeb.ViewModels.TrackViewModel>
+
+
+<div class="track-list-container container">
+	<h4>Recommendation</h4>
+	<hr />
+	@if (Model != null)
+	{
+		foreach (var track in Model)
+		{
+			<ul class="track-list">
+				<li class="track-item">
+					<div class="track-item-info">
+						<span class="track-item-artistName">
+							@track.ArtistName
+						</span>:
+						<span class="track-item-trackName">
+							@track.TrackName
+						</span>
+					</div>
+					<div class="track-item-preview">
+						@if (!string.IsNullOrEmpty(track.TrackPreviewUrl))
+						{
+							<audio controls name="media">
+								<source src="@track.TrackPreviewUrl" type="audio/mpeg">
+							</audio>
+						}
+						else
+						{
+							<span class="text-muted">No track preview available.</span>
+						}
+					</div>
+				</li>
+			</ul>
+		}
+	}
+	else
+	{
+		<span>There are no tracks found at the moment, try changing your inputs</span>
+	}
+</div>
+<p>
+	@Html.ActionLink("Change your previous inputs", "Create")
+</p>

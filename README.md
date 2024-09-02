@@ -1,1 +1,1 @@
-# CodingAssignment Spotify
+# Coding part for Spotify
